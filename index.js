@@ -37,6 +37,22 @@ async function run() {
 
             res.send(items)
         })
+
+        app.put('/state/:id' , async (req , res)=>
+        {
+            
+            const id = req.params.id;
+
+            const doc = req.body
+            const filter = { _id: ObjectId(id) };
+            const options = { upsert: true }
+            const updateDoc = {
+                $set: doc
+            }
+            const result = await taskCollection.updateOne(filter, updateDoc, options)
+
+            res.send({ result: result, accessToken: token })
+        })
     }
     finally {
         /* await client.close(); */
