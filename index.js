@@ -27,6 +27,16 @@ async function run() {
             const result = await taskCollection.insertOne(task)
             res.send(result)
         })
+
+        app.get('/tasks', async(req,res) =>
+        {
+            const query = {};
+            const cursor = taskCollection.find(query);
+            let items;
+            items = await cursor.toArray();
+
+            res.send(items)
+        })
     }
     finally {
         /* await client.close(); */
