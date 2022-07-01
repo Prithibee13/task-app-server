@@ -51,7 +51,7 @@ async function run() {
             }
             const result = await taskCollection.updateOne(filter, updateDoc, options)
 
-            res.send({ result: result, accessToken: token })
+            res.send({ result: result})
         })
     }
     finally {
