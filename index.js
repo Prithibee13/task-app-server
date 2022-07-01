@@ -35,6 +35,10 @@ async function run() {
 
 run().catch(console.dir)
 
+app.get('/' , async(req , res)=>
+{
+    console.log("Task app is Running at port" , port);
+})
 
 app.listen(port, () => {
     console.log("compify-server Running in port :", port);
